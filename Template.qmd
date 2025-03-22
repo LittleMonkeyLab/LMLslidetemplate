@@ -1,0 +1,591 @@
+---
+title: "Template.qmd"
+subtitle: "Subtitle here"
+author: "Dr. Gordon Wright"
+institute: "LittleMonkeyLab@Goldsmiths"
+date: last-modified
+date-format: "DD MMM, YYYY"
+format: 
+  LMLslides-revealjs: 
+    footer: "FontAwesome Demo | March 2025"
+    title-slide-attributes:
+      data-background-color: white
+      data-background-image:  _extensions/littlemonkeylab/LMLslides/backgrounds/brackets-light.svg
+      data-background-size: contain
+  LMLslides-html: default
+
+
+---
+## First Slide {.center}
+
+{{< fa thumbs-up >}} 
+{{< fa folder >}}
+
+This is my first slide content
+
+::: {.notes}
+These are speaker notes for the first slide.
+They will be visible in a separate window when presenting.
+They will also be visible in a separate section on the website when the presentation is published.
+:::
+
+## Second Slide {.smaller}
+
+- Bullet point 1
+- Bullet point 2
+- Bullet point 3
+
+::: {.notes}
+Here are detailed notes about bullet point 1.
+Additional context for bullet point 2.
+Important information related to bullet point 3.
+:::
+
+## Poll Elements with Icons
+
+The `.poll` class now has an automatic FontAwesome chart icon:
+
+::: {.poll}
+**Poll Question**: Which icon style do you prefer?
+
+1. Solid icons
+2. Regular (outlined) icons
+3. Brand icons
+4. No icons?
+:::
+
+## Changing the Icon
+
+{{< placeholder 400 200 format=svg >}}
+
+To use a different icon, modify the CSS content property: `{{{< fa chess-pawn >}}}` 
+
+```scss
+.reveal .slide .poll::before {
+  content: "\f201";  /* Chart icon */
+}
+```
+
+## Available FontAwesome Icons {.smaller}
+
+You can replace `"\f201"` with any other FontAwesome icon code:
+
+- `\f0e0` - <i class="fas fa-envelope"></i> Envelope
+- `\f024` - <i class="fas fa-flag"></i> Flag
+- `\f0eb` - <i class="fas fa-lightbulb"></i> Lightbulb
+- `\f059` - <i class="fas fa-question-circle"></i> Question Circle
+- `\f5da` - <i class="fas fa-vote-yea"></i> Vote Yea
+- `\f086` - <i class="fas fa-comments"></i> Comments
+- `\f521` - <i class="fas fa-crown"></i> Crown
+
+## Other Poll Examples
+
+::: {.poll}
+**Knowledge Check**: What makes FontAwesome work in Quarto?
+
+1. Adding the CSS class
+2. Including the FontAwesome CSS in the header
+3. Setting the font-family in CSS
+4. All of the above
+:::
+
+## Manual Icons in Content {.smaller}
+
+You can also manually insert icons anywhere using HTML:
+
+- <i class="fas fa-check text-success"></i> Success indicator
+- <i class="fas fa-times text-danger"></i> Failure indicator  
+- <i class="fas fa-info-circle" style="color: #00817c;"></i> Information
+- <i class="fas fa-exclamation-triangle" style="color: #f2a03d;"></i> Warning
+- <i class="fas fa-heart" style="color: #bf2642;"></i> Appreciation
+
+## How It Works
+
+1. We load FontAwesome in the document header:
+   ```yaml
+   include-in-header:
+     text: |
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   ```
+
+2. We use CSS to add the icon automatically:
+   ```css
+   .poll::before {
+     font-family: "Font Awesome 6 Free";
+     content: "\f201";
+     /* positioning styles */
+   }
+   ```
+
+## Finding Icon Codes
+
+To find other icon codes:
+
+1. Visit [FontAwesome Icons](https://fontawesome.com/icons)
+2. Select an icon you like
+3. Look for the Unicode value (e.g., "f201")
+4. Use it in your CSS with a backslash: `\f201`
+
+## Custom Icon Classes
+
+You can also create your own icon classes:
+
+```scss
+.icon-warning::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f071";
+  color: $orange;
+  margin-right: 0.5em;
+}
+```
+
+Then use `<span class="icon-warning">Warning text</span>`
+
+## Icon Size and Color Options
+
+Font Awesome icons can be customized:
+
+<i class="fas fa-camera fa-xs"></i> Extra Small  
+<i class="fas fa-camera fa-sm"></i> Small  
+<i class="fas fa-camera"></i> Regular  
+<i class="fas fa-camera fa-lg"></i> Large  
+<i class="fas fa-camera fa-2x"></i> 2x  
+<i class="fas fa-camera fa-3x"></i> 3x  
+
+<i class="fas fa-circle" style="color: var(--red-100);"></i>
+<i class="fas fa-circle" style="color: var(--orange-100);"></i>
+<i class="fas fa-circle" style="color: var(--green-100);"></i>
+<i class="fas fa-circle" style="color: var(--purple-100);"></i>
+
+## More Complex Icons
+
+FontAwesome also supports stacked and transformed icons:
+
+<span class="fa-stack fa-2x">
+  <i class="fas fa-circle fa-stack-2x" style="color: var(--blue);"></i>
+  <i class="fas fa-flag fa-stack-1x fa-inverse"></i>
+</span>
+
+<span class="fa-stack fa-2x">
+  <i class="fas fa-square fa-stack-2x" style="color: var(--green-100);"></i>
+  <i class="fas fa-terminal fa-stack-1x fa-inverse"></i>
+</span>
+
+<i class="fas fa-magic fa-2x" style="color: var(--purple-100);" data-fa-transform="rotate-30"></i>
+
+## Level2
+
+Text
+
+### Level 3
+
+text3
+
+#### level 4
+
+text4
+
+## Typography
+
+This presentation uses:
+
+- **Main Font**: "Commissioner" (sans-serif)
+- **Heading Font**: "Cabin" (sans-serif)
+- **Quote Font**: "Nanum Myeongjo" (serif)
+- **Special Adage Font**: "Amatic SC" (display)
+
+## Color Palette
+
+The theme defines these colors:
+
+::: {.poll}
+- Red (`#bf2642`): <span style="color: var(--red-100);">■■■■</span>
+- Orange (`#f2a03d`): <span style="color: var(--orange-100);">■■■■</span>
+- Green (`#02733e`): <span style="color: var(--green-100);">■■■■</span>
+- Purple (`#73245e`): <span style="color: var(--purple-100);">■■■■</span>
+- Blue (`#00817c`): <span style="color: #00817c;">■■■■</span>
+- Beige (`#f8f5f0`): <span style="color: #f8f5f0; background-color: #5c5859;">■■■■</span>
+:::
+
+## Custom Classes: Question {.smaller}
+
+::: {.question}
+This is a question box with blue left border and light blue background.
+It's perfect for rhetorical questions or discussion prompts.
+:::
+
+## Custom Classes: Poll {.smaller}
+
+::: {.poll}
+**Poll Question**: Which of these features do you find most useful?
+
+1. Custom font combinations
+2. Color themes
+3. Special block elements
+4. Layout options
+:::
+
+## Custom Classes: Appex {.smaller}
+
+::: {.appex}
+This is an "appex" box with dark blue left border and light blue background.
+Great for examples, applications, or extending ideas.
+:::
+
+## Custom Classes: Quotes
+
+> This is a blockquote styled with the Nanum Myeongjo font.
+> Notice the elegant serif style and slight color contrast.
+> Ideal for emphasizing important quotes or statements.
+
+## Custom Classes: Adages
+
+<div class="bigadage">
+This is a Big Adage - 250% font size in Amatic SC
+</div>
+
+<div class="smalladage">
+This is a Small Adage - 150% font size in Amatic SC
+</div>
+
+## HTML Element Classes
+
+### Block Elements
+
+<span class="block-el">Block Element (Span)</span>
+
+<div class="block-el">Block Element (Div)</div>
+
+### Inline Elements
+
+<span class="inline-el">Inline Element (Span)</span>
+
+<div class="inline-el">Inline Element (Div)</div>
+
+### Meta Elements
+
+<span class="meta-el">Meta Element (Span)</span>
+
+<div class="meta-el">Meta Element (Div)</div>
+
+## Size Variations
+
+Regular text size (default)
+
+<div class="small">
+This text is displayed with the "small" class (75% of normal size).
+</div>
+
+## Code Blocks
+
+```python
+# A Python code block with custom styling
+def hello_world():
+    """This demonstrates the code block styling"""
+    return "Hello, World!"
+
+# Notice the beige background and purple text
+for i in range(5):
+    print(f"Count: {i}")
+```
+
+## Details/Summary Element
+
+<details>
+<summary>Click to reveal additional information</summary>
+This content is hidden by default but can be expanded.
+The summary element is styled to be 75% of normal font size.
+</details>
+
+## Inverse Box
+
+<span class="inversebox">This is an inverse box</span> which has a colored background and white text.
+
+## Centered Content
+
+::: {.v-center-container}
+This content is vertically and horizontally centered in the slide.
+Perfect for emphasizing a single important point.
+:::
+
+## Interactive Elements
+
+- The theme includes styling for slide menu buttons
+- Navigation elements are positioned carefully
+- Header logo is styled to be 0.55em in height
+- Title slide has special styling
+
+## Annotations {.smaller}
+
+| Element | Description | Use Case |
+|---------|-------------|----------|
+| `.question` | Blue-bordered box | Discussion questions |
+| `.poll` | Orange-bordered box | Interactive polls or quizzes |
+| `.appex` | Blue background box | Applications and examples |
+| `.bigadage/.smalladage` | Special Amatic SC font | Memorable statements |
+| `.block-el/.inline-el/.meta-el` | Color-coded elements | Visual differentiation |
+| `.small` | Reduced text size | Less important content |
+| `.v-center-container` | Centered content | Emphasis on key points |
+| `.inversebox` | Colored background text | Stand-out statements |
+
+---
+
+## Title Slide Customizations
+
+- The title slide has centered text (`.title-slide` class)
+- Uses 'Avenir' font for title and author
+- Author name in body color
+- Institute name in italics at 80% size
+- 5em top margin
+
+::: {.notes}
+The main title slide (first slide) has special styling that includes centered text, specific font choices, and careful spacing.
+:::
+
+## Code Block Deep Dive
+
+```r
+# This code block demonstrates:
+# - Beige background (#f8f5f0)
+# - Purple code text (#73245e)
+# - Dark beige border (#9f8e71)
+# - 0.8em font size
+# - 6px by 9px padding
+# - Max height of 600px
+
+data <- read.csv("example.csv")
+ggplot(data, aes(x = x, y = y)) +
+  geom_point(color = "#bf2642") +
+  theme_minimal() +
+  labs(title = "Example Plot")
+```
+
+## Light Orange Background
+
+::: {style="background-color: #fdf8f0; padding: 1em;"}
+This demonstrates the light orange background created using:
+
+```scss
+$light-orange: lighten($orange, 60%);
+```
+
+Great for highlighting content without being too intense.
+:::
+
+## Dark Purple Elements
+
+::: {style="color: #39122f; font-weight: bold;"}
+This text uses the dark purple color variable:
+
+```scss
+$dark-purple: #39122f;
+```
+:::
+
+## Reveal Header with Logo
+
+The header logo is styled with:
+
+```scss
+.reveal-header .header-logo {
+  height: .55em;
+  cursor: pointer;
+}
+```
+
+It appears at the top of each slide, sized at 0.55em height.
+
+## Footer Positioning
+
+The footer is positioned:
+
+```scss
+.footer {
+  bottom: 8px !important;
+}
+```
+
+Notice how it stays at exactly 8px from the bottom edge.
+
+## Slide Menu Button
+
+The slide menu button positioning:
+
+```scss
+.slide-menu-button {
+  left: 10px !important;
+  bottom: 10px !important;
+}
+```
+
+Located at the bottom-left corner of your slides.
+
+## Slide Number Hiding
+
+The theme hides slide numbers on the title slide:
+
+```scss
+.reveal .slide-number > a[href*='title-slide'] {
+  display: none;
+}
+```
+
+## Root Color Variables
+
+CSS custom properties defined at the root:
+
+```scss
+:root {
+  --red-100: #bf2642;
+  --orange-100: #f2a03d;
+  --green-100: #02733e;
+  --purple-100: #73245e;
+}
+```
+
+<div style="color: var(--red-100);">Using --red-100 variable</div>
+<div style="color: var(--orange-100);">Using --orange-100 variable</div>
+<div style="color: var(--green-100);">Using --green-100 variable</div>
+<div style="color: var(--purple-100);">Using --purple-100 variable</div>
+
+## Presentation Font Size
+
+The base font size is set to:
+
+```scss
+$presentation-font-size-root: 46px;
+```
+
+This impacts all relative sizing throughout the presentation.
+
+## Pre-styled Code Blocks
+
+Code blocks have custom styling:
+
+```scss
+.reveal pre.sourceCode code {
+  // Specific styling for source code blocks
+  // Including background color, padding, and height constraints
+}
+```
+
+## Disabled Comment Blocks
+
+These commented-out sections represent alternative styling options that are currently disabled:
+
+```scss
+/*
+.reveal .slide .poll::before {
+  // Font Awesome icon styling that's currently disabled
+}
+*/
+
+/*
+.reveal .slide h1 {
+  font-family: 'Nanum Myeongjo', serif;
+}
+*/
+
+/*
+.slide-background.center.present {
+  background-color: #f8f5f0;
+}
+*/
+```
+
+## Alternative Title Slide Options
+
+These commented options show alternative title slide styling:
+
+```scss
+/*
+#title-slide {
+  text-align: left;
+  font-family: 'Nanum Myeongjo', serif;
+  margin: 5em 0em 0em 0em;
+}
+*/
+
+/*
+#title-slide p.author::before {
+  content: "";
+  display: block;
+  border: none;
+  background-color: $body-color;
+  color: $body-color;
+  height: 3px;
+  margin-bottom: 1em;
+}
+*/
+```
+
+## Body Text Colors and Background
+
+The default text and background colors:
+
+::: {.poll}
+- Body text color: `#5c5859`
+- Background color: `#fff` (white)
+- Heading color: `$blue` (`#00817c`)
+:::
+
+## CSS Structure Overview
+
+Your CSS is organized into:
+
+1. **SCSS Variables** - Font, color, and size definitions
+2. **Custom Classes** - Special element styling
+3. **Layout Components** - Positioning and structure
+4. **Commented Alternatives** - Optional styling
+
+## Complete Color Reference
+
+| Name | Hex Code | Variable | Sample |
+|------|----------|----------|--------|
+| Red | #bf2642 | $red / --red-100 | <span style="color: #bf2642;">■■■</span> |
+| Orange | #f2a03d | $orange / --orange-100 | <span style="color: #f2a03d;">■■■</span> |
+| Green | #02733e | $green / --green-100 | <span style="color: #02733e;">■■■</span> |
+| Purple | #73245e | $purple / --purple-100 | <span style="color: #73245e;">■■■</span> |
+| Dark Purple | #39122f | $dark-purple | <span style="color: #39122f;">■■■</span> |
+| Blue | #00817c | $blue | <span style="color: #00817c;">■■■</span> |
+| Beige | #f8f5f0 | $beige | <span style="color: #f8f5f0; background-color: #5c5859;">■■■</span> |
+| Dark Beige | #9f8e71 | $dark-beige | <span style="color: #9f8e71;">■■■</span> |
+| Body Color | #5c5859 | $body-color | <span style="color: #5c5859;">■■■</span> |
+
+## Element Class Reference
+
+| Selector | Purpose | CSS Variables Used |
+|----------|---------|-------------------|
+| .question | Discussion prompts | Blue border, light blue background |
+| .poll | Interactive questions | Orange border, beige background |
+| .appex | Examples | Dark blue border, light blue background |
+| .bigadage | Bold statements | Amatic SC font, 250% size |
+| .smalladage | Secondary statements | Amatic SC font, 150% size |
+| .block-el | Block elements | Green or white on green |
+| .inline-el | Inline elements | Red or white on red |
+| .meta-el | Meta elements | Orange or white on orange |
+
+## Final Notes
+
+This presentation, combined with the previous one, demonstrates all styling elements from your custom CSS, including:
+
+- Font families and sizes
+- Color variables and applications
+- Custom block and inline elements
+- Positioning and layout elements
+- All active and commented-out options
+
+You now have a complete reference for your custom Quarto theme.
+
+## Example poll
+
+You can provide set up for the code as if it is a normal slide.
+
+::: poll
+What is your favorite color?
+
+A. Red  
+B. Green  
+C. Blue  
+:::
